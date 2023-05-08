@@ -5108,67 +5108,6 @@ Response Example:
 ### Register
 
 <details>
-    <summary><code> GET /register/staking</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; queries total staking state of all registered resource nodes and meta nodes</summary>
-
-Request Example:
-```http
-https://rest-tropos.thestratos.org/register/staking
-```
-Response Example:
-```json
-{
-    "height": "3573",
-    "result": {
-        "resource_nodes_total_stake": {
-            "denom": "wei",
-            "amount": "0"
-        },
-        "meta_nodes_total_stake": {
-            "denom": "wei",
-            "amount": "100000000000000000000"
-        },
-        "total_bonded_stake": {
-            "denom": "wei",
-            "amount": "100000000000000000000"
-        },
-        "total_unbonded_stake": {
-            "denom": "wei",
-            "amount": "0"
-        },
-        "total_unbonding_stake": {
-            "denom": "wei",
-            "amount": "0"
-        }
-    }
-}
-```
-</details>
-<br>
-
-<details>
-    <summary><code> GET /register/params</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; queries params of registered module</summary>
-
-Request Example:
-```http
-https://rest-tropos.thestratos.org/register/params
-```
-Response Example:
-```json
-{
-    "height": "3588",
-    "result": {
-        "bond_denom": "wei",
-        "unbonding_threashold_time": "15552000000000000",
-        "unbonding_completion_time": "1209600000000000",
-        "max_entries": 16,
-        "resource_node_reg_enabled": true
-    }
-}
-```
-</details>
-<br>
-
-<details>
     <summary><code> GET /register/resource-node/{nodeAddress} </code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; queries info of a registered resource node</summary>
 
 
@@ -5234,6 +5173,44 @@ Response Example:
             "details": ""
         },
         "creation_time": "1970-01-01T00:00:00Z"
+    }
+}
+```
+</details>
+<br>
+
+<details>
+    <summary><code> GET /register/staking</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; queries total staking state of all registered resource nodes and meta nodes</summary>
+
+Request Example:
+```http
+https://rest-tropos.thestratos.org/register/staking
+```
+Response Example:
+```json
+{
+    "height": "3573",
+    "result": {
+        "resource_nodes_total_stake": {
+            "denom": "wei",
+            "amount": "0"
+        },
+        "meta_nodes_total_stake": {
+            "denom": "wei",
+            "amount": "100000000000000000000"
+        },
+        "total_bonded_stake": {
+            "denom": "wei",
+            "amount": "100000000000000000000"
+        },
+        "total_unbonded_stake": {
+            "denom": "wei",
+            "amount": "0"
+        },
+        "total_unbonding_stake": {
+            "denom": "wei",
+            "amount": "0"
+        }
     }
 }
 ```
@@ -5338,6 +5315,28 @@ Response Example:
 </details>
 <br>
 
+<details>
+    <summary><code> GET /register/params</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; queries params of registered module</summary>
+
+Request Example:
+```http
+https://rest-tropos.thestratos.org/register/params
+```
+Response Example:
+```json
+{
+    "height": "3588",
+    "result": {
+        "bond_denom": "wei",
+        "unbonding_threashold_time": "15552000000000000",
+        "unbonding_completion_time": "1209600000000000",
+        "max_entries": 16,
+        "resource_node_reg_enabled": true
+    }
+}
+```
+</details>
+<br>
 
 <details>
     <summary><code> GET /register/resource-count</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; queries total number of bonded resource nodes</summary>
@@ -5388,87 +5387,105 @@ https://rest-tropos.thestratos.org/pot/report/epoch/1
 Response Example:
 ```json
 {
-    "height": "1358",
-    "result": {
-        "reporter": "stsds13yakj2xgzzdfcw7kd5gtfcfv2k6sn5eg4vdfem",
-        "report_reference": " report for epoch 1",
-        "tx_hash": "CF404452FF47EDCA99787FD5E79355D7A3BDB0E65E6FE3A54F4914F0E9EE0DF6"
-    }
+  "height": "19979",
+  "result": {
+    "reporter": "stsds1umqakd5tkedkval6fsch0y67mjlfch0umxuqnh",
+    "report_reference": "volume_report_stsds1umqakd5tkedkval6fsch0y67mjlfch0umxuqnh_1",
+    "tx_hash": "B22B2F859627C6E2BC6D83DD76C0B06A304228E75213DC4E2024AAC1A20426A0"
+  }
 }
 ```
 </details>
 <br>
 
-<!--  
 <details>
-    <summary><code> GET /pot/rewards/epoch/{epoch}?wallet_address={wallet_address}</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; queries  Pot rewards info of a wallet_address at a specific epoch</summary>
+    <summary><code> GET /pot/rewards/epoch/{epoch}</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; queries all rewards info at a specific epoch</summary>
 
 Request Example:
 ```http
-https://rest-tropos.thestratos.org/pot/rewards/epoch/3?wallet_address=st16uzr20lx072gexwjuvg94hz3t8y73u4085s9sw
+https://rest-tropos.thestratos.org/pot/rewards/epoch/1?page=1&limit=3
 ```
 Response Example:
 ```json
 {
-    "height": "2613",
-    "result": [
+  "height": "19968",
+  "result": [
+    {
+      "wallet_address": "st1qk5crq35zzus7c3ztx6znez8xe3wmn9y755uzl",
+      "reward_from_mining_pool": [
         {
-            "wallet_address": "st16uzr20lx072gexwjuvg94hz3t8y73u4085s9sw",
-            "reward_from_mining_pool": [
-                {
-                    "denom": "utros",
-                    "amount": "48000000710"
-                }
-            ],
-            "reward_from_traffic_pool": [
-                {
-                    "denom": "ustos",
-                    "amount": "300"
-                }
-            ]
+          "denom": "utros",
+          "amount": "3813153"
         }
-    ]
+      ],
+      "reward_from_traffic_pool": [
+        {
+          "denom": "wei",
+          "amount": "5208698191"
+        }
+      ]
+    },
+    {
+      "wallet_address": "st1pfsrjnx74vwfpd96haml5054q9upvx4jtwmhxy",
+      "reward_from_mining_pool": [
+        {
+          "denom": "utros",
+          "amount": "7813153114"
+        }
+      ],
+      "reward_from_traffic_pool": [
+        {
+          "denom": "wei",
+          "amount": "10672625850829"
+        }
+      ]
+    },
+    {
+      "wallet_address": "st19wcqrjdpl3259f9flfc4zhy04m22g0r6ndk9er",
+      "reward_from_mining_pool": [
+        {
+          "denom": "utros",
+          "amount": "3813153"
+        }
+      ],
+      "reward_from_traffic_pool": [
+        {
+          "denom": "wei",
+          "amount": "5208698191"
+        }
+      ]
+    }
+  ]
 }
 ```
 </details>
 <br>
-
--->
 
 <details>
     <summary><code> GET /pot/rewards/wallet/{walletAddress}[?height={BlockHeight}, optional]</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; queries owner's Pot rewards info at a specific height</summary>
 
 Request Example:
 ```http
-https://rest-tropos.thestratos.org/pot/rewards/wallet/st1am40hqkacscgwvvsjcxzxk49r8cuamgyrcgppg/3877
+https://rest-tropos.thestratos.org/pot/rewards/wallet/st18jxmc78ws5wq7q7umr6plpz8x0d9qtzu98v8em?height=10000
 ```
 Response Example:
 ```json
 {
-    "height": "3877",
-    "result": {
-        "wallet_address": "st1am40hqkacscgwvvsjcxzxk49r8cuamgyrcgppg",
-        "MatureTotalReward": [
-            {
-                "denom": "utros",
-                "amount": "1696408013053"
-            },
-            {
-                "denom": "wei",
-                "amount": "3576778"
-            }
-        ],
-        "ImmatureTotalReward": [
-            {
-                "denom": "utros",
-                "amount": "872451398"
-            },
-            {
-                "denom": "wei",
-                "amount": "278865"
-            }
-        ]
-    }
+  "height": "10000",
+  "result": {
+    "wallet_address": "st18jxmc78ws5wq7q7umr6plpz8x0d9qtzu98v8em",
+    "mature_total_reward": [],
+    "immature_total_reward": [
+      {
+        "denom": "utros",
+        "amount": "46878920500"
+      },
+      {
+        "denom": "wei",
+        "amount": "34050759021267"
+      }
+    ]
+  }
 }
 ```
 </details>
@@ -5481,29 +5498,27 @@ Response Example:
 
 Request Example:
 ```http
-https://rest-tropos.thestratos.org/pot/rewards/wallet/st1am40hqkacscgwvvsjcxzxk49r8cuamgyrcgppg?epoch=50
+https://rest-tropos.thestratos.org/pot/rewards/wallet/st18jxmc78ws5wq7q7umr6plpz8x0d9qtzu98v8em?epoch=10
 ```
 Response Example:
 ```json
 {
-    "height": "4471",
-    "result": [
-        {
-            "wallet_address": "st1am40hqkacscgwvvsjcxzxk49r8cuamgyrcgppg",
-            "reward_from_mining_pool": [
-                {
-                    "denom": "utros",
-                    "amount": "48000000710"
-                }
-            ],
-            "reward_from_traffic_pool": [
-                {
-                    "denom": "wei",
-                    "amount": "2918"
-                }
-            ]
-        }
+  "height": "19941",
+  "result": {
+    "wallet_address": "st18jxmc78ws5wq7q7umr6plpz8x0d9qtzu98v8em",
+    "reward_from_mining_pool": [
+      {
+        "denom": "utros",
+        "amount": "7813151751"
+      }
+    ],
+    "reward_from_traffic_pool": [
+      {
+        "denom": "wei",
+        "amount": "5672467197734"
+      }
     ]
+  }
 }
 ```
 </details>
@@ -5514,88 +5529,30 @@ Response Example:
 
 Request Example:
 ```http
-https://rest-tropos.thestratos.org/pot/rewards/wallet/st1am40hqkacscgwvvsjcxzxk49r8cuamgyrcgppg
+https://rest-tropos.thestratos.org/pot/rewards/wallet/st18jxmc78ws5wq7q7umr6plpz8x0d9qtzu98v8em
 ```
 Response Example:
 ```json
 {
-    "height": "3877",
-    "result": {
-        "wallet_address": "st1am40hqkacscgwvvsjcxzxk49r8cuamgyrcgppg",
-        "MatureTotalReward": [
-            {
-                "denom": "utros",
-                "amount": "1696408013053"
-            },
-            {
-                "denom": "wei",
-                "amount": "3576778"
-            }
-        ],
-        "ImmatureTotalReward": [
-            {
-                "denom": "utros",
-                "amount": "872451398"
-            },
-            {
-                "denom": "wei",
-                "amount": "278865"
-            }
-        ]
-    }
-}
-```
-</details>
-<br>
-
-<details>
-    <summary><code> GET /pot/rewards/epoch/{epoch}</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; queries all rewards info at a specific epoch</summary>
-
-Request Example:
-```http
-https://rest-tropos.thestratos.org/pot/rewards/epoch/1?page=1
-```
-Response Example:
-```json
-{
-    "height": "4404",
-    "result": [
-        {
-            "wallet_address": "st19cpsaw2q2dcmc5s7vu09xntqacakfcfdw8dg8m",
-            "reward_from_mining_pool": [
-                {
-                    "denom": "utros",
-                    "amount": "2003083802"
-                }
-            ],
-            "reward_from_traffic_pool": [
-                {
-                    "denom": "wei",
-                    "amount": "3863162732376"
-                }
-            ]
-        },
-        {
-            "wallet_address": "st1xlhwxzexp4fjnf2xt8zsd6jh7y3ap0sgddaf4r",
-            "reward_from_mining_pool": [
-                {
-                    "denom": "utros",
-                    "amount": "2003083802"
-                }
-            ],
-            "reward_from_traffic_pool": [
-                {
-                    "denom": "wei",
-                    "amount": "3863162732376"
-                }
-            ]
-        }
+  "height": "19926",
+  "result": {
+    "wallet_address": "st18jxmc78ws5wq7q7umr6plpz8x0d9qtzu98v8em",
+    "mature_total_reward": [],
+    "immature_total_reward": [
+      {
+        "denom": "utros",
+        "amount": "93757827824"
+      },
+      {
+        "denom": "wei",
+        "amount": "88509725445757"
+      }
     ]
+  }
 }
 ```
 </details>
 <br>
-
 
 <details>
     <summary><code>GET /pot/slashing/{walletAddress} [?height={BlockHeight}, optional]</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; queries owner's Pot slashing info at a specific height</summary>
@@ -5624,117 +5581,163 @@ https://rest-tropos.thestratos.org/pot/params
 Response Example:
 ```json
 {
-    "height": "3997",
-    "result": {
-        "bond_denom": "wei",
-        "reward_denom": "utros",
-        "mature_epoch": "2016",
-        "mining_reward_params": [
-            {
-                "total_mined_valve_start": {
-                    "denom": "utros",
-                    "amount": "0"
-                },
-                "total_mined_valve_end": {
-                    "denom": "utros",
-                    "amount": "16819200000000000"
-                },
-                "mining_reward": {
-                    "denom": "utros",
-                    "amount": "80000000000"
-                },
-                "block_chain_percentage_in_ten_thousand": "2000",
-                "resource_node_percentage_in_ten_thousand": "6000",
-                "meta_node_percentage_in_ten_thousand": "2000"
-            },
-            {
-                "total_mined_valve_start": {
-                    "denom": "utros",
-                    "amount": "16819200000000000"
-                },
-                "total_mined_valve_end": {
-                    "denom": "utros",
-                    "amount": "25228800000000000"
-                },
-                "mining_reward": {
-                    "denom": "utros",
-                    "amount": "40000000000"
-                },
-                "block_chain_percentage_in_ten_thousand": "2000",
-                "resource_node_percentage_in_ten_thousand": "6200",
-                "meta_node_percentage_in_ten_thousand": "1800"
-            },
-            {
-                "total_mined_valve_start": {
-                    "denom": "utros",
-                    "amount": "25228800000000000"
-                },
-                "total_mined_valve_end": {
-                    "denom": "utros",
-                    "amount": "29433600000000000"
-                },
-                "mining_reward": {
-                    "denom": "utros",
-                    "amount": "20000000000"
-                },
-                "block_chain_percentage_in_ten_thousand": "2000",
-                "resource_node_percentage_in_ten_thousand": "6400",
-                "meta_node_percentage_in_ten_thousand": "1600"
-            },
-            {
-                "total_mined_valve_start": {
-                    "denom": "utros",
-                    "amount": "29433600000000000"
-                },
-                "total_mined_valve_end": {
-                    "denom": "utros",
-                    "amount": "31536000000000000"
-                },
-                "mining_reward": {
-                    "denom": "utros",
-                    "amount": "10000000000"
-                },
-                "block_chain_percentage_in_ten_thousand": "2000",
-                "resource_node_percentage_in_ten_thousand": "6600",
-                "meta_node_percentage_in_ten_thousand": "1400"
-            },
-            {
-                "total_mined_valve_start": {
-                    "denom": "utros",
-                    "amount": "31536000000000000"
-                },
-                "total_mined_valve_end": {
-                    "denom": "utros",
-                    "amount": "32587200000000000"
-                },
-                "mining_reward": {
-                    "denom": "utros",
-                    "amount": "5000000000"
-                },
-                "block_chain_percentage_in_ten_thousand": "2000",
-                "resource_node_percentage_in_ten_thousand": "6800",
-                "meta_node_percentage_in_ten_thousand": "1200"
-            },
-            {
-                "total_mined_valve_start": {
-                    "denom": "utros",
-                    "amount": "32587200000000000"
-                },
-                "total_mined_valve_end": {
-                    "denom": "utros",
-                    "amount": "40000000000000000"
-                },
-                "mining_reward": {
-                    "denom": "utros",
-                    "amount": "2500000000"
-                },
-                "block_chain_percentage_in_ten_thousand": "2000",
-                "resource_node_percentage_in_ten_thousand": "7000",
-                "meta_node_percentage_in_ten_thousand": "1000"
-            }
-        ],
-        "community_tax": "0.020000000000000000"
+  "height": "19637",
+  "result": {
+    "bond_denom": "wei",
+    "reward_denom": "utros",
+    "mature_epoch": "2016",
+    "mining_reward_params": [
+      {
+        "total_mined_valve_start": {
+          "denom": "utros",
+          "amount": "0"
+        },
+        "total_mined_valve_end": {
+          "denom": "utros",
+          "amount": "16819200000000000"
+        },
+        "mining_reward": {
+          "denom": "utros",
+          "amount": "80000000000"
+        },
+        "block_chain_percentage_in_bp": "2000",
+        "resource_node_percentage_in_bp": "6000",
+        "meta_node_percentage_in_bp": "2000"
+      },
+      {
+        "total_mined_valve_start": {
+          "denom": "utros",
+          "amount": "16819200000000000"
+        },
+        "total_mined_valve_end": {
+          "denom": "utros",
+          "amount": "25228800000000000"
+        },
+        "mining_reward": {
+          "denom": "utros",
+          "amount": "40000000000"
+        },
+        "block_chain_percentage_in_bp": "2000",
+        "resource_node_percentage_in_bp": "6200",
+        "meta_node_percentage_in_bp": "1800"
+      },
+      {
+        "total_mined_valve_start": {
+          "denom": "utros",
+          "amount": "25228800000000000"
+        },
+        "total_mined_valve_end": {
+          "denom": "utros",
+          "amount": "29433600000000000"
+        },
+        "mining_reward": {
+          "denom": "utros",
+          "amount": "20000000000"
+        },
+        "block_chain_percentage_in_bp": "2000",
+        "resource_node_percentage_in_bp": "6400",
+        "meta_node_percentage_in_bp": "1600"
+      },
+      {
+        "total_mined_valve_start": {
+          "denom": "utros",
+          "amount": "29433600000000000"
+        },
+        "total_mined_valve_end": {
+          "denom": "utros",
+          "amount": "31536000000000000"
+        },
+        "mining_reward": {
+          "denom": "utros",
+          "amount": "10000000000"
+        },
+        "block_chain_percentage_in_bp": "2000",
+        "resource_node_percentage_in_bp": "6600",
+        "meta_node_percentage_in_bp": "1400"
+      },
+      {
+        "total_mined_valve_start": {
+          "denom": "utros",
+          "amount": "31536000000000000"
+        },
+        "total_mined_valve_end": {
+          "denom": "utros",
+          "amount": "32587200000000000"
+        },
+        "mining_reward": {
+          "denom": "utros",
+          "amount": "5000000000"
+        },
+        "block_chain_percentage_in_bp": "2000",
+        "resource_node_percentage_in_bp": "6800",
+        "meta_node_percentage_in_bp": "1200"
+      },
+      {
+        "total_mined_valve_start": {
+          "denom": "utros",
+          "amount": "32587200000000000"
+        },
+        "total_mined_valve_end": {
+          "denom": "utros",
+          "amount": "40000000000000000"
+        },
+        "mining_reward": {
+          "denom": "utros",
+          "amount": "2500000000"
+        },
+        "block_chain_percentage_in_bp": "2000",
+        "resource_node_percentage_in_bp": "7000",
+        "meta_node_percentage_in_bp": "1000"
+      }
+    ],
+    "community_tax": "0.020000000000000000",
+    "initial_total_supply": {
+      "denom": "wei",
+      "amount": "100000000000000000000000000"
     }
+  }
+}
+```
+</details>
+<br>
+
+<details>
+    <summary><code>GET /pot/total-mined-token</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; queries total mined token</summary>
+
+Request Example:
+```http
+https://rest-tropos.thestratos.org/pot/total-mined-token
+```
+Response Example:
+```json
+{
+  "height": "19033",
+  "result": {
+    "denom": "utros",
+    "amount": "959999999923"
+  }
+}
+```
+</details>
+<br>
+
+<details>
+    <summary><code>GET /pot/circulation-supply</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; queries circulation supply</summary>
+
+Request Example:
+```http
+https://rest-tropos.thestratos.org/pot/circulation-supply
+```
+Response Example:
+```json
+{
+  "height": "19619",
+  "result": [
+    {
+      "denom": "wei",
+      "amount": "441335743191571263470157636"
+    }
+  ]
 }
 ```
 </details>
@@ -5745,11 +5748,32 @@ Response Example:
 ### SDS
 
 <details>
-    <summary><code> GET /sds/simulatePrepay/{amtToPrepay}</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; queries a simulated prepay result </summary>
+    <summary><code> GET /sds/fileUpload/{fileHash}</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; query uploaded file info by hash </summary>
 
 Request Example:
 ```http
-https://rest-tropos.thestratos.org/sds/simulatePrepay/8000000000
+https://rest-tropos.thestratos.org/sds/fileUpload/v05ahm51dd62ise3fo7ojqub90p0ql2c3jg37hk8
+```
+Response Example:
+```json
+{
+  "height": "20444",
+  "result": {
+    "height": "4109",
+    "reporters": "DwAAAAAAAAA=",
+    "uploader": "st18986jyng5vsprmtzkdxla80jrw7qyc6wl73h0u"
+  }
+}
+```
+</details>
+<br>
+
+<details>
+    <summary><code> GET /sds/simPrepay/{amtToPrepay}</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; queries a simulated prepay result </summary>
+
+Request Example:
+```http
+https://rest-tropos.thestratos.org/sds/simPrepay/8000000000
 ```
 Response Example:
 ```json
